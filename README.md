@@ -3,6 +3,12 @@
 Multiple simple programs that I wrote in plain C as a freshman at the SSTU, my university. 
 
 Includes:
+Sorting algorithms:<br>
+Bubble sort<br>
+Insertion sort<br>
+Shellsort<br>
+Quicksort<br>
+Counting sort<br>
 
 Graph algorithms:<br>
 DFT (Recursive)<br>
