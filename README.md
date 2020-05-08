@@ -2,7 +2,7 @@
 
 Multiple simple programs that I wrote in plain C as a freshman at the SSTU, my university. 
 
-Includes:
+Includes:<br>
 Sorting algorithms:<br>
 Bubble sort<br>
 Insertion sort<br>
