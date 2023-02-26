@@ -3,6 +3,7 @@
 FILE *f = fopen("input.txt", "r");
 FILE *h = fopen("output.txt", "w");
 
+
 void preorder(Ttree *tr) {
 	if (tr) {
 		PF("%d ", tr->inf);
@@ -53,7 +54,8 @@ void del_tree(Ttree *&tr) {
 	}
 }
 
-void print_list(Ttree *tr) { //Печать листьев
+void print_list(Ttree *tr) {
+	FILE *h = fopen("output.txt", "w");
 	if (tr) {
 		if (tr->left == NULL && tr->right == NULL)
 			fprintf(h,"%d ",tr->inf);
@@ -70,26 +72,27 @@ void degree(int x, Ttree *tr) {
 	else if (x > tr->inf) degree(x, tr->right);
 	else {
 		if (tr->left == NULL && tr->right == NULL)
-			PF("Степень: 0");
+			PF("Degree: 0");
 		if (tr->left != NULL && tr->right == NULL)
-			PF("Степень: 1");
+			PF("Degree: 1");
 		if (tr->left == NULL && tr->right != NULL)
-			PF("Степень: 1");
+			PF("Degree: 1");
 		if (tr->left != NULL && tr->right != NULL)
-			PF("Степень: 2");
+			PF("Degree: 2");
 	}
 }
 
 void task1() {
 	int a, node;
 	Ttree *tree = NULL;
+
 	while (!feof(f)) {
 		fscanf(f, "%d", &a);
 		add(a, tree);
 	    print_list(tree);
 	}
 	inorder(tree);
-	PF("\nВведите нужный узел: ");
+	PF("\nEnter the required node: ");
 	SC("%d", &node);
 	degree(node, tree);
 	del_tree(tree);
@@ -100,11 +103,12 @@ void task1() {
 void task2() {
 	int a;
 	Ttree *tree = NULL;
+
 	while (!feof(f)) {
 		fscanf(f, "%d", &a);
 		add(a, tree);
 		print_list(tree);
-	} 
+	}
 	inorder(tree);
 	del_tree(tree);
 	rewind(f);
