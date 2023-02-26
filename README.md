@@ -1,6 +1,6 @@
 # A-Portrait-of-the-Programmer-as-a-Freshman
 
-Multiple simple programs that I wrote in plain C as a freshman at the SSTU, my university. 
+Multiple simple programs that I wrote in C/C++ as a freshman at the SSTU, my university.
 
 Includes:<br>
 Sorting algorithms:<br>
