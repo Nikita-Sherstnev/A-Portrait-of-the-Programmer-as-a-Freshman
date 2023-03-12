@@ -43,7 +43,6 @@ void output(void) {
 int menu_select(void) {
 	char s[80];
 	int c;
-	system("cls");
     PF("1.Добавить ученика\n2.Вывести список\n3.Разделение на классы\n4.Выход\n");
 	do {
 		PF("Введите номер нужного пункта\n");
@@ -117,7 +116,6 @@ void proverka(void) {
 }
 
 int main(void) {
-	system("chcp 1251");
 	char choice, c;
 	int i = 0;
 	int_list();
