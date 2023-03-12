@@ -95,7 +95,7 @@ int task4(void)
 {
 	double x = 0;
 	PF("Enter x: ");
-	scanf_s("%lf", &x);
+	scanf("%lf", &x);
 	if (x <= 3) {
 		PF("Result z=%lf\n", task4func1(x));
 	}
@@ -356,7 +356,7 @@ int task14(void)
 	char str[100] = { 0 };
 	char str2[200] = { 0 };
 	int i, j = 0;
-	do { i = getchar(); } 
+	do { i = getchar(); }
 	while (i != '\n' && i != EOF);
 	fgets(str, 100, stdin);
 	for (i = 0; i < 100; i++)
@@ -373,7 +373,7 @@ int task15(void)
 {
 	char str[100] = { 0 }, str2[100] = { 0 }, word[100] = { 0 };
 	int i, j = 0, t, k = 0, words = 0, max = 0;
-	do { i = getchar(); } 
+	do { i = getchar(); }
 	while (i != '\n' && i != EOF);
 	fgets(str, 100, stdin);
 	for (i = 0; i <= strlen(str); i++)
