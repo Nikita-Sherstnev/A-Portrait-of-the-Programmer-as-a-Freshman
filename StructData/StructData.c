@@ -24,7 +24,6 @@ void int_list(void) {
 int menu_select(void) {
 	char s[80];
 	int c;
-	system("cls");
 	PF("1.Ввод даты\n2.Вывод дат\n3.Какие даты високосного года\n4.Выход");
 	do {
 		PF("\nВыберите нужный пункт: ");
@@ -113,12 +112,11 @@ void leap_year() {
 
 int main(void)
 {
-	system("chcp 1251");
 	char choice, c;
 	int i=0;
 	int_list();
 	FILE *fp;
-	if ((fp=fopen("file.txt","r"))!=NULL) 
+	if ((fp=fopen("file.txt","r"))!=NULL)
 		while ((c = fgetc(fp)) != EOF) {
 			ungetc(c, fp);
 			fscanf(fp,"%d", &data_list[i].day);
