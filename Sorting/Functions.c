@@ -1,4 +1,4 @@
-#include "header.h"
+#include "Header.h"
 
 struct student {
 	int group;
@@ -118,7 +118,7 @@ void task2(int nsort) {
 
 			fscanf(fp, "%d", &stud_list[i].year);
 			do { c = fgetc(fp); } while (c != '\n' && c != EOF);
-			
+
 			for(k=0;k<5;k++)
 		    fscanf(fp, "%d", &stud_list[i].marks[k]);
 			do { c = fgetc(fp); } while (c != '\n' && c != EOF);

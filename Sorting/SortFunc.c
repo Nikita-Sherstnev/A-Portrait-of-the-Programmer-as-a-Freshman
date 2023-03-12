@@ -1,4 +1,4 @@
-#include "header.h"
+#include "Header.h"
 
 void swap(int *arr, int num1, int num2) {
 	int temp = arr[num1];
@@ -65,21 +65,21 @@ void Bubblesort(int *arr, int n) {
 }
 
 void Countingsort(int *arr, int n) {
-	int *count, m, i, j, k=0, min, max; 
+	int *count, m, i, j, k=0, min, max;
 	count = NULL;
 	min = max = arr[0];
-	for (i = 0; i < n; i++) 
+	for (i = 0; i < n; i++)
 		if (arr[i] < min) min = arr[i];
 	else if (arr[i] > max) max = arr[i];
 	m = max - min + 1;
 
-	count = (int *)calloc(m, sizeof(int)); 
+	count = (int *)calloc(m, sizeof(int));
 	if (count == NULL) return;
 
-	for (i = 0; i < n; i++) 
+	for (i = 0; i < n; i++)
 		count[arr[i] - min]++;
 	for (i = 0; i < m; i++)
-		for (j = 0; j < count[i]; j++) 
+		for (j = 0; j < count[i]; j++)
 			arr[k++] = i + min;
 	free(count);
 	return;
