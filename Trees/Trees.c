@@ -16,8 +16,8 @@ int main()
 		switch (ntask) {
 		case 1: task1(); break;
 		case 2: task2(); break;
-		case 3: fcloseall(); exit(0);
-		default: fcloseall(); exit(0);
+		case 3: exit(0);
+		default: exit(0);
 		}
 	}
     return 0;

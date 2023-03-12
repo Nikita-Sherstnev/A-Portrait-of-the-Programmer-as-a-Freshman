@@ -1,8 +1,5 @@
 #include "Header.h"
 
-FILE *f = fopen("input.txt", "r");
-FILE *h = fopen("output.txt", "w");
-
 
 void preorder(Ttree *tr) {
 	if (tr) {
@@ -28,14 +25,15 @@ void postorder(Ttree *tr) {
 	}
 }
 
-void add(int x, Ttree *&tr) {
-	if (!tr) {
-		tr = (Ttree*)malloc(sizeof(Ttree));
-		tr->inf = x;
-		tr->left = tr->right = NULL;
+void add(int x, Ttree **tr) {
+	if (!(*tr)) {
+		*tr = (Ttree*)malloc(sizeof(Ttree));
+		(*tr)->inf = x;
+		(*tr)->left = (*tr)->right = NULL;
+
 	}
-	else if (x < tr->inf) add(x, tr->left);
-	else if (x > tr->inf) add(x, tr->right);
+	else if (x < (*tr)->inf) add(x, &(*tr)->left);
+	else if (x > (*tr)->inf) add(x, &(*tr)->right);
 }
 
 void search(int x, Ttree *tr) {
@@ -45,7 +43,7 @@ void search(int x, Ttree *tr) {
 	else PF("%d", tr->inf);
 }
 
-void del_tree(Ttree *&tr) {
+void del_tree(Ttree *tr) {
 	if (!tr) {
 		del_tree(tr->left);
 		del_tree(tr->right);
@@ -54,15 +52,11 @@ void del_tree(Ttree *&tr) {
 	}
 }
 
-void print_list(Ttree *tr) {
-	FILE *h = fopen("output.txt", "w");
+void print_list(Ttree *tr, FILE *h) {
 	if (tr) {
-		if (tr->left == NULL && tr->right == NULL)
-			fprintf(h,"%d ",tr->inf);
-		else {
-			print_list(tr->left);
-			print_list(tr->right);
-		}
+		print_list(tr->left, h);
+		fprintf(h,"%d ", tr->inf);
+		print_list(tr->right, h);
 	}
 }
 
@@ -85,32 +79,42 @@ void degree(int x, Ttree *tr) {
 void task1() {
 	int a, node;
 	Ttree *tree = NULL;
+	FILE *f = fopen("input.txt", "r");
+	FILE *h = fopen("output.txt", "w");
 
 	while (!feof(f)) {
 		fscanf(f, "%d", &a);
-		add(a, tree);
-	    print_list(tree);
+		add(a, &tree);
 	}
+	print_list(tree, h);
+	fclose(h);
+
 	inorder(tree);
 	PF("\nEnter the required node: ");
 	SC("%d", &node);
 	degree(node, tree);
 	del_tree(tree);
 	rewind(f);
+	fclose(f);
 	return;
 }
 
 void task2() {
 	int a;
 	Ttree *tree = NULL;
+	FILE *f = fopen("input.txt", "r");
+	FILE *h = fopen("output.txt", "w");
 
 	while (!feof(f)) {
 		fscanf(f, "%d", &a);
-		add(a, tree);
-		print_list(tree);
+		add(a, &tree);
 	}
+	print_list(tree, h);
+	fclose(h);
+
 	inorder(tree);
 	del_tree(tree);
 	rewind(f);
+	fclose(f);
 	return;
 }
