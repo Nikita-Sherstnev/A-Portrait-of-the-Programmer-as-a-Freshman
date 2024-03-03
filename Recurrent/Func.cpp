@@ -1,3 +1,11 @@
+#include <assert.h>
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+#include "math.h"
+#include "time.h"
+
 #include "Header.h"
 
 double Ger(int a, int n)
@@ -17,7 +25,7 @@ int task1(void)
 	return 0;
 }
 
-long long int Fib(int n) 
+long long int Fib(int n)
 {
 	int a = 1, ta,
 		b = 1, tb,
@@ -132,7 +140,7 @@ int Sum(int n)
 }
 
 int task5(void) {
-	int n, k; 
+	int n, k;
 	PF("¬ведите n и k: ");
 	SC("%d%d", &n, &k);
 	PF("%d\n", Sum(2*n)+Sum(k));
@@ -188,7 +196,7 @@ int task7(void) {
 	return 0;
 }
 
-int Prime(int n)
+int FindPrimes(int n)
 {
 	int i, k=0;
 	if (n == 0) return 0;
@@ -196,14 +204,14 @@ int Prime(int n)
 		if (n % i == 0) k++;
 	if (k == 0) PF("%d\n", n);
 	k = 0;
-	return Prime(n-1);
+	return FindPrimes(n-1);
 }
 
 int task8(void) {
 	int n;
 	PF("¬ведите n: ");
 	SC("%d", &n);
-	Prime(n);
+	FindPrimes(n);
 	system("pause");
 	return 0;
 }
@@ -489,7 +497,7 @@ int task22(void) {
 	p = &sum;
 	PF("¬ведите число n>0: ");
 	SC("%d", &n);
-	if (n<=0) 
+	if (n<=0)
 	{
 		PF("n должно быть больше нул€!");
 		return 0;
@@ -501,3 +509,35 @@ int task22(void) {
 	system("pause");
 	return 0;
 }
+
+
+#ifdef TEST_MAIN
+void testSoch();
+
+int main(int argc, char **argv)
+{
+	assert(Fib(1) == 1);
+	assert(Fib(2) == 1);
+	assert(Fib(3) == 2);
+	assert(Fib(4) == 3);
+	assert(Fib(15) == 610);
+
+	testSoch();
+
+	assert(NOD(5,10) == 5);
+
+	assert(Sum(10) == 55);
+
+	// FindPrimes(10);
+
+	printf("Tests passed\n");
+}
+
+void testSoch() {
+	int count = 0;
+	int* p = &count;
+	assert(Soch(4,2,p) == 6);
+	assert(Soch(7,3,p) == 35);
+}
+
+#endif
